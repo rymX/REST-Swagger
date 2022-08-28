@@ -1,7 +1,7 @@
 import Express from 'express';
 
 const router = Express.Router();
-import {Nanoid} from "nanoid" ;
+import { nanoid} from "nanoid" ;
 
 const idLength = 8;
 
@@ -22,7 +22,7 @@ router.post("/" , (req,res)=>{
             id : Nanoid(idLength) , 
             ...req.body 
         }
-        req.app.db.get("book").push(book).write()
+        req.app.db.get("books").push(book).write()
     }
     catch(err) 
     {
@@ -33,6 +33,33 @@ router.post("/" , (req,res)=>{
 })
 // update 
 
-// delete 
+router.put("/:id", (req,res)=>{
 
-module.exports(router);
+    try{
+    req.app.db.get("books").find({id : req.params.id}).assign(req.body).write()
+
+    res.send(req.app.db.get("books").find({id : req.params.id}))
+
+    }
+    catch(error){
+        res.status(500).send(error)
+    }
+
+})
+
+// delete book
+
+router.delete("/:id",(req,res)=>{
+
+    try{
+        req.app.db.get("books").remove({id : req.params.id}).write()
+        res.sendStatus(200)
+    }
+     catch(error){
+        res.status(500).send(error)
+    }
+
+})
+
+export default router ;
+// module.exports = router ;

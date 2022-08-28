@@ -4,7 +4,9 @@ import Cors from 'cors'
 import Morgan from 'morgan'
 import { Low ,JSONFile } from 'lowdb' ;
 import { fileURLToPath } from 'url' ;
-import {booksRouter} from "./routes/books"
+import booksRouter from "./routes/books.js";
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express'
 
 const PORT = process.env.PORT || 4000 ;
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -21,7 +23,27 @@ const db = new Low(adapter) ;
 await db.read() ;
 db.data ||= { books: [] }
 
+const options = {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Hello World',
+        version: '1.0.0',
+      },
+    },
+    servers :[
+        {url : 'http://localhost:4000'}
+        
+    ],
+    apis: ['./routes/*.js'],
+  };
+  
+  const openapiSpecification = swaggerJSDoc(options);
+  
+
 const app = Express();
+
+app.use('/api-doc', swaggerUI.serve , swaggerUI.setup(openapiSpecification) )
 app.db = db ;
 
 
@@ -31,7 +53,9 @@ app.use(Express.json()) ;
 
 app.use(Morgan("dev")) ;
 
+app.use("/books" , booksRouter)
+
+
 app.listen(PORT , () => console.log(`the server is runnig ojn port ${PORT}`))
 
-app.use("/books" , booksRouter)
 
