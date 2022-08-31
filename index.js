@@ -9,19 +9,19 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express'
 
 const PORT = process.env.PORT || 4000 ;
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// import {FileSync} from "lowdb/adapters/FileSync"
 
 const file = join(__dirname, 'db.json')
 const adapter = new JSONFile(file)
 
-// const adapter = new FileSync('db.json');
 
 const db = new Low(adapter) ;
 
 await db.read() ;
 db.data ||= { books: [] }
+
 
 const options = {
     definition: {
@@ -30,11 +30,15 @@ const options = {
         title: 'Hello World',
         version: '1.0.0',
       },
-    },
-    servers :[
-        {url : 'http://localhost:4000'}
-        
+   
+    servers: [
+      {
+        url: "http://localhost:4000", // url
+        description: "Local server", // name
+      },
     ],
+  },
+    
     apis: ['./routes/*.js'],
   };
   
@@ -42,9 +46,9 @@ const options = {
   
 
 const app = Express();
-
-app.use('/api-doc', swaggerUI.serve , swaggerUI.setup(openapiSpecification) )
 app.db = db ;
+app.use('/api-doc', swaggerUI.serve , swaggerUI.setup(openapiSpecification) )
+
 
 
 app.use(Cors() )
@@ -56,6 +60,6 @@ app.use(Morgan("dev")) ;
 app.use("/books" , booksRouter)
 
 
-app.listen(PORT , () => console.log(`the server is runnig ojn port ${PORT}`))
+app.listen(PORT , () => console.log(`the server is runnig on port ${PORT}`))
 
 

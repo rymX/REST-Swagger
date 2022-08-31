@@ -5,8 +5,47 @@ import { nanoid} from "nanoid" ;
 
 const idLength = 8;
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     book:
+ *       type: object 
+ *       required:
+ *         -title
+ *         -author
+ *       properties:
+ *         id:
+ *             type: string 
+ *             description: the id of the book
+ *         title:
+ *             type: string 
+ *             description: the book title
+ *         author:
+ *             type: string 
+ *             description: the book author
+ */
+
+/**
+ * @swagger
+ * /books:
+ *   get:
+ *     summary: return list of all books
+ *     responses :
+ *       200:
+ *         description : list of all the books 
+ *         content: 
+ *           application/json:
+ *             schema: 
+ *               type: array
+ *               items: 
+ *                 $ref: '#/components/schemas/book'
+ */
+
+
 router.get("/",(req,res)=>{
-    const books = req.app.db.get('books') ;
+
+    const books = req.app.db.data["books"];
     res.send(books);
 })
 
