@@ -6,12 +6,13 @@ import { Low ,JSONFile } from 'lowdb' ;
 import { fileURLToPath } from 'url' ;
 import booksRouter from "./routes/books.js";
 import swaggerJSDoc from 'swagger-jsdoc';
-import swaggerUI from 'swagger-ui-express'
+import swaggerUI from 'swagger-ui-express';
+
+
 
 const PORT = process.env.PORT || 4000 ;
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
 
 const file = join(__dirname, 'db.json')
 const adapter = new JSONFile(file)
@@ -20,7 +21,7 @@ const adapter = new JSONFile(file)
 const db = new Low(adapter) ;
 
 await db.read() ;
-db.data ||= { books: [] }
+// db.data ||= { books: [] }
 
 
 const options = {
@@ -57,9 +58,10 @@ app.use(Express.json()) ;
 
 app.use(Morgan("dev")) ;
 
-app.use("/books" , booksRouter)
+ app.use("/books" , booksRouter)
 
 
 app.listen(PORT , () => console.log(`the server is runnig on port ${PORT}`))
+
 
 

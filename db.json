@@ -15,23 +15,5 @@
             "title":"les mésirable",
             "autho":"vector hugo"
         }
-    ] , 
-
-    "cheat" : [
-        {
-            "id": "kuhgiu54" , 
-            "title":"learn react",
-            "autho":"some writer"
-        },
-        {
-            "id": "74897hgy" , 
-            "title":"linux from zero to hero",
-            "autho":"some body"
-        },
-        {
-            "id": "84684jhu" , 
-            "title":"les mésirable",
-            "autho":"vector hugo"
-        }
     ]
 }
