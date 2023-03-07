@@ -24,9 +24,10 @@ Here are a list of major frameworks/libraries used to bootstrap my project
 
 
 * <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg" width="36" height="36" alt="NodeJS" /></a>
+<a href="https://expressjs.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/express-colored.svg" width="36" height="36" alt="Express" /></a>
 * <a href="https://www.npmjs.com/package/swagger-ui-express" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/antd-colored.svg" width="36" height="36" alt="swagger-ui-express" /></a>
-* <a href="https://www.npmjs.com/package/axios" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/axios-colored.svg" width="36" height="36" alt="axios" /></a>
-* <a href="https://www.npmjs.com/package/react-paginate" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-paginate-colored.svg" width="36" height="36" alt="react-paginate" /></a>
+* <a href="https://www.npmjs.com/package/swagger-jsdoc" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/axios-colored.svg" width="36" height="36" alt="swagger-jsdoc" /></a>
+
 
 
 
